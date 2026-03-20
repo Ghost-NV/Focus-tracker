@@ -1,0 +1,2213 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>رحلة الـ 700 ساعة - نسخة أسطورية</title>
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome للأيقونات -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* ==================== المتغيرات والثيمات ==================== */
+      :root {
+        --bg-primary: #0a0f1c;
+        --bg-secondary: #1a1f2e;
+        --bg-tertiary: #232837;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b7c5;
+        --text-muted: #6c757d;
+        --accent-primary: #0066cc;
+        --accent-secondary: #00b7ff;
+        --accent-gradient: linear-gradient(135deg, #0066cc, #00b7ff);
+        --accent-bonus: #ffaa00;
+        --accent-boundless: #9b59b6;
+        --accent-success: #00cc66;
+        --accent-danger: #ff4444;
+        --accent-warning: #ffaa00;
+        --border-color: #2d3344;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        --glow-effect: 0 0 20px rgba(0, 183, 255, 0.3);
+      }
+
+      body.light-theme {
+        --bg-primary: #f0f2f5;
+        --bg-secondary: #ffffff;
+        --bg-tertiary: #f8f9fa;
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
+        --text-muted: #6c757d;
+        --border-color: #dee2e6;
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cairo", "Work Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* ==================== سكرول أنيق ==================== */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-primary);
+        border-radius: 10px;
+        border: 2px solid var(--bg-secondary);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-secondary);
+      }
+
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-primary) var(--bg-secondary);
+      }
+
+      /* ==================== شريط التنقل ==================== */
+      .navbar {
+        background-color: var(--bg-secondary);
+        padding: 1rem 2rem;
+        box-shadow: var(--card-shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--accent-secondary);
+      }
+
+      .logo i {
+        font-size: 1.8rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      .nav-item {
+        cursor: pointer;
+        padding: 0.6rem 1.2rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-item:hover {
+        color: var(--accent-secondary);
+        background-color: rgba(0, 183, 255, 0.1);
+      }
+
+      .nav-item.active {
+        color: white;
+        background: var(--accent-gradient);
+        box-shadow: var(--glow-effect);
+      }
+
+      /* ==================== زر الإعدادات ==================== */
+      .settings-toggle {
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+      }
+
+      .settings-toggle:hover {
+        transform: rotate(90deg);
+        color: var(--accent-secondary);
+        border-color: var(--accent-secondary);
+      }
+
+      /* ==================== لوحة الإعدادات ==================== */
+      .settings-panel {
+        position: fixed;
+        top: 0;
+        left: -400px;
+        width: 380px;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        box-shadow: var(--card-shadow);
+        z-index: 2000;
+        transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border-left: 1px solid var(--border-color);
+        overflow-y: auto;
+      }
+
+      .settings-panel.open {
+        left: 0;
+      }
+
+      .settings-header {
+        padding: 2rem;
+        background: var(--accent-gradient);
+        color: white;
+        position: relative;
+      }
+
+      .settings-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .settings-close {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .settings-close:hover {
+        transform: rotate(90deg);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .settings-body {
+        padding: 2rem;
+      }
+
+      .settings-section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .settings-section h4 {
+        color: var(--accent-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .setting-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .setting-item label {
+        display: flex;
+        justify-content: space-between;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .setting-item label span {
+        color: var(--accent-secondary);
+        font-weight: 700;
+      }
+
+      .setting-item input[type="range"] {
+        width: 100%;
+        height: 6px;
+        appearance: none;
+        background: var(--bg-tertiary);
+        border-radius: 3px;
+        outline: none;
+      }
+
+      .setting-item input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        background: var(--accent-gradient);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: var(--glow-effect);
+        transition: transform 0.2s ease;
+      }
+
+      .theme-switch {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .theme-option {
+        flex: 1;
+        padding: 0.8rem;
+        border: 2px solid var(--border-color);
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .theme-option.active {
+        border-color: var(--accent-secondary);
+        background: var(--accent-gradient);
+        color: white;
+      }
+
+      .save-settings-btn {
+        width: 100%;
+        padding: 1rem;
+        background: var(--accent-gradient);
+        border: none;
+        border-radius: 15px;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .save-settings-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--glow-effect);
+      }
+
+      /* ==================== أنماط متطورة ==================== */
+      .mode-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        margin: 1rem 0;
+      }
+
+      .mode-btn {
+        padding: 1rem 0.5rem;
+        border: 2px solid var(--border-color);
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mode-btn i {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .mode-btn small {
+        font-size: 0.7rem;
+        opacity: 0.7;
+      }
+
+      /* نمط عادي - أخضر */
+      .mode-btn[data-mode="NORMAL"] {
+        border-color: #2ecc71;
+        box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+      }
+      .mode-btn[data-mode="NORMAL"] i {
+        color: #2ecc71;
+      }
+      .mode-btn[data-mode="NORMAL"].active,
+      .mode-btn[data-mode="NORMAL"]:hover {
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        border-color: #2ecc71;
+        color: white;
+        box-shadow: 0 0 30px rgba(46, 204, 113, 0.5);
+      }
+
+      /* نمط متوسط - أزرق */
+      .mode-btn[data-mode="INTERMEDIATE"] {
+        border-color: #3498db;
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+      }
+      .mode-btn[data-mode="INTERMEDIATE"] i {
+        color: #3498db;
+      }
+      .mode-btn[data-mode="INTERMEDIATE"].active,
+      .mode-btn[data-mode="INTERMEDIATE"]:hover {
+        background: linear-gradient(135deg, #2980b9, #3498db);
+        border-color: #3498db;
+        color: white;
+        box-shadow: 0 0 30px rgba(52, 152, 219, 0.5);
+      }
+
+      /* نمط متقدم - أحمر */
+      .mode-btn[data-mode="ADVANCED"] {
+        border-color: #e74c3c;
+        box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+      }
+      .mode-btn[data-mode="ADVANCED"] i {
+        color: #e74c3c;
+      }
+      .mode-btn[data-mode="ADVANCED"].active,
+      .mode-btn[data-mode="ADVANCED"]:hover {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+        border-color: #e74c3c;
+        color: white;
+        box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
+      }
+
+      /* نمط جنوني - أحمر متوهج */
+      .mode-btn[data-mode="INSANE"] {
+        border-color: #ff3838;
+        box-shadow: 0 0 20px rgba(255, 56, 56, 0.5);
+        animation: insanePulse 2s infinite;
+      }
+      .mode-btn[data-mode="INSANE"] i {
+        color: #ff3838;
+        animation: insaneRotate 3s infinite;
+      }
+      @keyframes insanePulse {
+        0% {
+          box-shadow: 0 0 20px rgba(255, 56, 56, 0.5);
+        }
+        50% {
+          box-shadow:
+            0 0 40px rgba(255, 56, 56, 0.8),
+            0 0 60px rgba(255, 56, 56, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 20px rgba(255, 56, 56, 0.5);
+        }
+      }
+      @keyframes insaneRotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(10deg);
+        }
+        75% {
+          transform: rotate(-10deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+      .mode-btn[data-mode="INSANE"]::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff3838, #ff6b6b, #ff3838, #ff6b6b);
+        background-size: 400% 400%;
+        border-radius: 22px;
+        z-index: -1;
+        animation: insaneBorder 3s ease infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .mode-btn[data-mode="INSANE"].active::before,
+      .mode-btn[data-mode="INSANE"]:hover::before {
+        opacity: 1;
+      }
+      @keyframes insaneBorder {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .mode-btn[data-mode="INSANE"].active,
+      .mode-btn[data-mode="INSANE"]:hover {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+        border-color: transparent;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 0 50px rgba(255, 56, 56, 0.8);
+      }
+
+      /* نمط مخصص - رمادي مع تروس */
+      .mode-btn[data-mode="CUSTOM"] {
+        border-color: #95a5a6;
+        box-shadow: 0 0 15px rgba(149, 165, 166, 0.3);
+        grid-column: span 2;
+      }
+      .mode-btn[data-mode="CUSTOM"] i {
+        color: #95a5a6;
+        animation: customGear 3s linear infinite;
+      }
+      @keyframes customGear {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .mode-btn[data-mode="CUSTOM"].active,
+      .mode-btn[data-mode="CUSTOM"]:hover {
+        background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+        border-color: #95a5a6;
+        color: white;
+      }
+
+      /* تأثيرات التحويم الموحدة */
+      .mode-btn:hover {
+        transform: translateY(-3px);
+        color: white !important;
+      }
+      .mode-btn:hover i {
+        color: white !important;
+      }
+      .mode-btn.active {
+        color: white !important;
+        transform: scale(1.02);
+      }
+      .mode-btn.active i {
+        color: white !important;
+      }
+
+      /* ==================== الإحصائيات المتقدمة ==================== */
+      .advanced-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .stat-card-advanced {
+        background: var(--bg-secondary);
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card-advanced::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-gradient);
+      }
+
+      .stat-card-advanced:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .stat-value-advanced {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent-secondary);
+        line-height: 1.2;
+      }
+
+      .stat-label-advanced {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      /* ==================== العناصر الرئيسية ==================== */
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        flex: 1;
+        width: 100%;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .screen-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent-secondary);
+        margin-bottom: 1rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .screen-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-secondary),
+          transparent
+        );
+      }
+
+      .progress-circle-container {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        margin: 2rem auto;
+        filter: drop-shadow(var(--glow-effect));
+      }
+
+      .progress-circle {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .progress-circle-bg {
+        fill: none;
+        stroke: var(--border-color);
+        stroke-width: 8;
+      }
+
+      .progress-circle-fill {
+        fill: none;
+        stroke: var(--accent-primary);
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-dasharray: 942.48;
+        stroke-dashoffset: 942.48;
+        transition: stroke-dashoffset 0.5s ease;
+        filter: drop-shadow(0 0 10px currentColor);
+      }
+
+      .screen-bonus .progress-circle-fill {
+        stroke: var(--accent-bonus);
+      }
+      .screen-boundless .progress-circle-fill {
+        stroke: var(--accent-boundless);
+      }
+
+      .circle-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      .circle-number {
+        font-size: 4rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fff, var(--accent-secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .circle-label {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+
+      .margin-info {
+        background-color: var(--bg-secondary);
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        font-weight: 500;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .margin-info span {
+        color: var(--accent-secondary);
+        font-weight: 700;
+      }
+
+      /* ==================== قسم الإدخال ==================== */
+      .input-section {
+        width: 100%;
+        max-width: 450px;
+        margin: 2rem auto;
+        background-color: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--border-color);
+      }
+
+      .input-group {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+        width: 100%;
+      }
+
+      .hours-input {
+        flex: 2;
+        padding: 0.8rem 1rem;
+        background-color: var(--bg-primary);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        min-width: 0;
+      }
+
+      .hours-input:focus {
+        outline: none;
+        border-color: var(--accent-secondary);
+        box-shadow: var(--glow-effect);
+      }
+
+      .add-button {
+        padding: 0.8rem 1.5rem;
+        background: var(--accent-gradient);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+        min-width: fit-content;
+        box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+      }
+
+      .add-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 102, 204, 0.5);
+        background: linear-gradient(135deg, #0052a3, #0099ff);
+      }
+
+      .add-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 5px rgba(0, 102, 204, 0.3);
+      }
+
+      .error-message {
+        color: var(--accent-danger);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        text-align: center;
+        min-height: 1.5rem;
+      }
+
+      .quick-add-container {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .quick-add {
+        padding: 0.5rem 1.2rem;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.9rem;
+        min-width: 50px;
+      }
+
+      .quick-add:hover {
+        background: var(--accent-gradient);
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+      }
+
+      .end-month-button {
+        background-color: transparent;
+        border: 2px solid var(--border-color);
+        color: var(--text-secondary);
+        padding: 0.75rem 2rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .end-month-button:hover {
+        border-color: var(--accent-secondary);
+        color: var(--accent-secondary);
+      }
+
+      .quick-action-btn {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--card-shadow);
+      }
+
+      .quick-action-btn:hover {
+        background: var(--accent-gradient);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .stats-cards {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .stat-card {
+        background: var(--bg-secondary);
+        padding: 1rem;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+      }
+
+      .timer-container {
+        background: var(--bg-secondary);
+        border-radius: 30px;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 500px;
+        border: 1px solid var(--border-color);
+      }
+
+      .timer-display {
+        font-size: 4rem;
+        text-align: center;
+        color: var(--accent-secondary);
+        font-family: monospace;
+        justify-content: center;
+        align-items: center;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        gap: 0;
+        direction: ltr;
+        width: fit-content;
+        margin: 0 auto;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .timer-controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .timer-btn {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .timer-btn.start {
+        background: var(--accent-success);
+        color: white;
+      }
+      .timer-btn.pause {
+        background: var(--accent-warning);
+        color: white;
+      }
+      .timer-btn.reset {
+        background: var(--text-muted);
+        color: white;
+      }
+      .timer-btn.add-to-month {
+        background: var(--accent-gradient);
+        color: white;
+      }
+
+      .timer-progress {
+        width: 100%;
+        height: 4px;
+        background: var(--bg-tertiary);
+        border-radius: 2px;
+        margin-top: 1rem;
+        overflow: hidden;
+      }
+
+      .timer-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: var(--accent-gradient);
+        border-radius: 2px;
+        transition: width 0.1s linear;
+      }
+
+      .timer-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .timer-stats span {
+        color: var(--accent-secondary);
+        font-weight: 700;
+      }
+
+      .achievement-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(
+          135deg,
+          var(--accent-bonus),
+          var(--accent-boundless)
+        );
+        color: white;
+        padding: 2rem;
+        border-radius: 30px;
+        text-align: center;
+        z-index: 3000;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        animation: achievementAppear 0.5s ease;
+      }
+
+      @keyframes achievementAppear {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .footer {
+        text-align: center;
+        padding: 2rem;
+        background: var(--bg-secondary);
+        margin-top: 3rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+        }
+        .settings-panel {
+          width: 100%;
+          left: -100%;
+        }
+        .advanced-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stats-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .progress-circle-container {
+          width: 280px;
+          height: 280px;
+        }
+        .circle-number {
+          font-size: 3rem;
+        }
+        .input-group {
+          flex-direction: column;
+        }
+        .add-button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== شريط التنقل ==================== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-rocket"></i>
+          <span>رحلة الـ 700</span>
+        </div>
+
+        <ul class="nav-links">
+          <li class="nav-item active" data-screen="quarter">
+            <i class="fas fa-chart-pie"></i><span>الربع</span>
+          </li>
+          <li class="nav-item" data-screen="month1">
+            <i class="fas fa-calendar-alt"></i><span>الشهر 1</span>
+          </li>
+          <li class="nav-item" data-screen="month2">
+            <i class="fas fa-calendar-alt"></i><span>الشهر 2</span>
+          </li>
+          <li class="nav-item" data-screen="month3">
+            <i class="fas fa-calendar-alt"></i><span>الشهر 3</span>
+          </li>
+          <li class="nav-item" data-screen="bonus">
+            <i class="fas fa-gift"></i><span>البونس</span>
+          </li>
+          <li class="nav-item" data-screen="boundless">
+            <i class="fas fa-infinity"></i><span>اللامحدود</span>
+          </li>
+          <li class="nav-item" data-screen="timer">
+            <i class="fas fa-clock"></i><span>المؤقت</span>
+          </li>
+        </ul>
+
+        <div class="settings-toggle" id="settings-toggle">
+          <i class="fas fa-cog"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== لوحة الإعدادات ==================== -->
+    <div class="settings-panel" id="settings-panel">
+      <div class="settings-header">
+        <h3><i class="fas fa-cog"></i> الإعدادات المتقدمة</h3>
+        <div class="settings-close" id="settings-close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+      <div class="settings-body">
+        <!-- قسم الأهداف -->
+        <div class="settings-section">
+          <h4><i class="fas fa-bullseye"></i> تعديل الأهداف</h4>
+          <div class="setting-item">
+            <label>هدف الربع <span id="quarter-value-display">700</span></label>
+            <input
+              type="range"
+              id="quarter-target"
+              min="100"
+              max="2000"
+              step="50"
+              value="700"
+            />
+          </div>
+          <div class="setting-item">
+            <label>هدف الشهر <span id="month-value-display">200</span></label>
+            <input
+              type="range"
+              id="month-target"
+              min="50"
+              max="500"
+              step="10"
+              value="200"
+            />
+          </div>
+          <div class="setting-item">
+            <label>حد البونس <span id="bonus-value-display">100</span></label>
+            <input
+              type="range"
+              id="bonus-target"
+              min="20"
+              max="300"
+              step="5"
+              value="100"
+            />
+          </div>
+        </div>
+
+        <!-- قسم الأنماط الجاهزة -->
+        <div class="settings-section">
+          <h4><i class="fas fa-bolt"></i> أنماط جاهزة</h4>
+          <div class="mode-buttons">
+            <!-- عادي - أخضر -->
+            <button class="mode-btn" data-mode="NORMAL">
+              <i class="fas fa-leaf"></i>
+              <span>عادي</span>
+              <small>400 + 100 = 500</small>
+            </button>
+
+            <!-- متوسط - أزرق -->
+            <button class="mode-btn" data-mode="INTERMEDIATE">
+              <i class="fas fa-chart-line"></i>
+              <span>متوسط</span>
+              <small>500 + 100 = 600</small>
+            </button>
+
+            <!-- متقدم - أحمر -->
+            <button class="mode-btn" data-mode="ADVANCED">
+              <i class="fas fa-fire"></i>
+              <span>متقدم</span>
+              <small>600 + 100 = 700</small>
+            </button>
+
+            <!-- جنوني - أحمر متوهج -->
+            <button class="mode-btn" data-mode="INSANE">
+              <i class="fas fa-skull"></i>
+              <span>جنوني</span>
+              <small>750 + 150 = 900</small>
+            </button>
+
+            <!-- مخصص - رمادي مع تروس -->
+            <button class="mode-btn" data-mode="CUSTOM">
+              <i class="fas fa-cog"></i>
+              <span>مخصص</span>
+              <small>حرية كاملة</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- قسم الثيمات -->
+        <div class="settings-section">
+          <h4><i class="fas fa-palette"></i> الثيم</h4>
+          <div class="theme-switch">
+            <button class="theme-option active" data-theme="dark">
+              <i class="fas fa-moon"></i> داكن
+            </button>
+            <button class="theme-option" data-theme="light">
+              <i class="fas fa-sun"></i> فاتح
+            </button>
+          </div>
+        </div>
+
+        <!-- قسم الإشعارات -->
+        <div class="settings-section">
+          <h4><i class="fas fa-bell"></i> الإشعارات</h4>
+          <div class="setting-item">
+            <label
+              ><span>تذكير يومي</span>
+              <input type="time" id="daily-reminder" value="20:00"
+            /></label>
+          </div>
+          <div class="setting-item">
+            <label
+              ><span>إشعارات الإنجازات</span>
+              <input type="checkbox" id="achievement-notifications" checked
+            /></label>
+          </div>
+        </div>
+
+        <!-- قسم التحديات -->
+        <div class="settings-section">
+          <h4><i class="fas fa-trophy"></i> التحديات</h4>
+          <div class="setting-item">
+            <label
+              ><span>تحدي الاستمرارية</span>
+              <select id="streak-challenge">
+                <option value="7">أسبوع (7 أيام)</option>
+                <option value="30" selected>شهر (30 يوم)</option>
+                <option value="90">ربع سنة (90 يوم)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- زر الحفظ -->
+        <button class="save-settings-btn" id="save-settings">
+          <i class="fas fa-save"></i> حفظ الإعدادات
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== المحتوى الرئيسي ==================== -->
+    <div class="container">
+      <!-- الإحصائيات المتقدمة -->
+      <div class="advanced-stats">
+        <div class="stat-card-advanced">
+          <div class="stat-icon"><i class="fas fa-calendar-week"></i></div>
+          <div class="stat-value-advanced" id="streak-count">0</div>
+          <div class="stat-label-advanced">أيام متتالية</div>
+        </div>
+        <div class="stat-card-advanced">
+          <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="stat-value-advanced" id="avg-daily">0</div>
+          <div class="stat-label-advanced">معدل اليوم</div>
+        </div>
+        <div class="stat-card-advanced">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-value-advanced" id="remaining-days">0</div>
+          <div class="stat-label-advanced">أيام متبقية</div>
+        </div>
+        <div class="stat-card-advanced">
+          <div class="stat-icon"><i class="fas fa-percent"></i></div>
+          <div class="stat-value-advanced" id="completion-rate">0%</div>
+          <div class="stat-label-advanced">نسبة الإنجاز</div>
+        </div>
+      </div>
+
+      <!-- المحتوى الرئيسي -->
+      <div class="main-content">
+        <h1 class="screen-title" id="screen-title">الربع</h1>
+
+        <div class="margin-info" id="margin-info">
+          <i class="fas fa-bullseye"></i> هدف الربع: <span>700</span> ساعة
+        </div>
+
+        <div class="progress-circle-container" id="progress-container">
+          <svg class="progress-circle" viewBox="0 0 320 320">
+            <circle
+              class="progress-circle-bg"
+              cx="160"
+              cy="160"
+              r="150"
+            ></circle>
+            <circle
+              class="progress-circle-fill"
+              id="progress-fill"
+              cx="160"
+              cy="160"
+              r="150"
+            ></circle>
+          </svg>
+          <div class="circle-text">
+            <div class="circle-number" id="current-number">0</div>
+            <div class="circle-label" id="current-label">ساعة</div>
+          </div>
+        </div>
+
+        <!-- قسم الإدخال -->
+        <div class="input-section">
+          <div class="input-group">
+            <input
+              type="number"
+              class="hours-input"
+              id="hours-input"
+              placeholder="أدخل الساعات (+ أو -)"
+              step="0.5"
+            />
+            <button class="add-button" id="add-button">
+              <i class="fas fa-plus"></i> إضافة
+            </button>
+          </div>
+          <div class="error-message" id="error-message"></div>
+
+          <div class="quick-add-container">
+            <button class="quick-add" data-hours="1">+1</button>
+            <button class="quick-add" data-hours="2">+2</button>
+            <button class="quick-add" data-hours="4">+4</button>
+            <button class="quick-add" data-hours="8">+8</button>
+          </div>
+        </div>
+
+        <button
+          class="end-month-button"
+          id="end-month-button"
+          style="display: none"
+        >
+          <i class="fas fa-flag-checkered"></i> إنهاء الشهر الحالي
+        </button>
+      </div>
+
+      <!-- بطاقات الإحصائيات السريعة (مخفية) -->
+      <div class="stats-cards" id="stats-cards" style="display: none"></div>
+
+      <!-- حاوية المؤقت (مخفية) - نسخة مطورة -->
+      <div class="timer-container" id="timer-container" style="display: none">
+        <div class="timer-display" id="timer-display">
+          <span class="timer-digits">00:00:00</span>
+          <span class="timer-ms">.000</span>
+        </div>
+
+        <div class="timer-controls">
+          <button class="timer-btn start" id="timer-start">
+            <i class="fas fa-play"></i>
+          </button>
+          <button class="timer-btn pause" id="timer-pause" disabled>
+            <i class="fas fa-pause"></i>
+          </button>
+          <button class="timer-btn reset" id="timer-reset">
+            <i class="fas fa-undo-alt"></i>
+          </button>
+          <button class="timer-btn add-to-month" id="timer-add">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+        <div class="timer-progress">
+          <div class="timer-progress-fill" id="timer-progress-fill"></div>
+        </div>
+
+        <div class="timer-stats">
+          <div>⏱️ الإجمالي: <span id="timer-total-hours">0.00</span> ساعة</div>
+          <div>📊 الجلسات: <span id="timer-sessions">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- تذييل -->
+    <footer class="footer">
+      <p>لنرى من سيصمد للنهاية، 2026</p>
+    </footer>
+
+    <!-- أزرار سريعة إضافية -->
+    <div
+      style="
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+      "
+    >
+      <div style="display: flex; gap: 0.5rem">
+        <button id="manual-save" class="quick-action-btn" title="حفظ يدوي">
+          <i class="fas fa-save"></i>
+        </button>
+        <button
+          id="export-data"
+          class="quick-action-btn"
+          title="تصدير البيانات"
+        >
+          <i class="fas fa-download"></i>
+        </button>
+        <button
+          id="share-achievement"
+          class="quick-action-btn"
+          title="مشاركة الإنجاز"
+        >
+          <i class="fas fa-share-alt"></i>
+        </button>
+      </div>
+      <div style="display: flex; gap: 0.5rem">
+        <button
+          id="clear-data"
+          class="quick-action-btn"
+          title="مسح كل البيانات"
+          style="background: var(--accent-danger)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+        <button
+          id="import-data"
+          class="quick-action-btn"
+          title="استيراد بيانات"
+        >
+          <i class="fas fa-file-import"></i>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // ==================== البيانات الأساسية ====================
+      let appState = {
+        month1: 0,
+        month2: 0,
+        month3: 0,
+        activeMonth: "month1",
+        currentScreen: "quarter",
+        timer: {
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 0,
+          totalMilliseconds: 0,
+          isRunning: false,
+          intervalId: null,
+          sessions: 0,
+          totalTime: 0,
+        },
+        isMonthEnded: { month1: false, month2: false, month3: false },
+      };
+
+      // ==================== نظام الإعدادات ====================
+      const UserSettings = {
+        defaults: {
+          targets: { quarter: 700, month: 200, bonusMax: 100 },
+          theme: "dark",
+          notifications: { dailyReminder: "20:00", achievements: true },
+          challenge: "30",
+        },
+        current: null,
+
+        load() {
+          const saved = localStorage.getItem("userSettings");
+          this.current = saved ? JSON.parse(saved) : { ...this.defaults };
+          this.applyToApp();
+          this.updateUI();
+          return this.current;
+        },
+
+        save() {
+          localStorage.setItem("userSettings", JSON.stringify(this.current));
+          this.applyToApp();
+          showToast("✅ تم حفظ الإعدادات", "success");
+        },
+
+        applyToApp() {
+          if (this.current.theme === "light") {
+            document.body.classList.add("light-theme");
+          } else {
+            document.body.classList.remove("light-theme");
+          }
+          if (typeof updateUI === "function") updateUI();
+        },
+
+        updateUI() {
+          document.getElementById("quarter-target").value =
+            this.current.targets.quarter;
+          document.getElementById("quarter-value-display").textContent =
+            this.current.targets.quarter;
+          document.getElementById("month-target").value =
+            this.current.targets.month;
+          document.getElementById("month-value-display").textContent =
+            this.current.targets.month;
+          document.getElementById("bonus-target").value =
+            this.current.targets.bonusMax;
+          document.getElementById("bonus-value-display").textContent =
+            this.current.targets.bonusMax;
+
+          document.querySelectorAll(".theme-option").forEach((btn) => {
+            btn.classList.toggle(
+              "active",
+              btn.dataset.theme === this.current.theme,
+            );
+          });
+
+          this.updateModeButtons();
+        },
+
+        updateModeButtons() {
+          const t = this.current.targets;
+          let activeMode = "CUSTOM";
+
+          if (t.quarter === 500 && t.month === 133 && t.bonusMax === 100)
+            activeMode = "NORMAL";
+          else if (t.quarter === 600 && t.month === 167 && t.bonusMax === 100)
+            activeMode = "INTERMEDIATE";
+          else if (t.quarter === 700 && t.month === 200 && t.bonusMax === 100)
+            activeMode = "ADVANCED";
+          else if (t.quarter === 900 && t.month === 250 && t.bonusMax === 150)
+            activeMode = "INSANE";
+
+          document.querySelectorAll(".mode-btn").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.mode === activeMode);
+          });
+        },
+
+        setTheme(theme) {
+          this.current.theme = theme;
+          this.applyToApp();
+          this.updateUI();
+        },
+      };
+
+      // ==================== نظام الأنماط المطور ====================
+      const MODE_PRESETS = {
+        NORMAL: {
+          name: "عادي",
+          targets: { quarter: 500, month: 133, bonusMax: 100 },
+        },
+        INTERMEDIATE: {
+          name: "متوسط",
+          targets: { quarter: 600, month: 167, bonusMax: 100 },
+        },
+        ADVANCED: {
+          name: "متقدم",
+          targets: { quarter: 700, month: 200, bonusMax: 100 },
+        },
+        INSANE: {
+          name: "جنوني",
+          targets: { quarter: 900, month: 250, bonusMax: 150 },
+        },
+        CUSTOM: { name: "مخصص", targets: null },
+      };
+
+      function applyMode(mode) {
+        const preset = MODE_PRESETS[mode];
+        if (!preset) return;
+
+        if (mode === "CUSTOM") {
+          document.getElementById("settings-panel").classList.add("open");
+          showToast("🎨 حرك السلايدرات لتصميم خطتك الخاصة", "info");
+          return;
+        }
+
+        UserSettings.current.targets = { ...preset.targets };
+        updateUI();
+        UserSettings.save();
+
+        // رسائل مختصرة للأنماط
+        const messages = {
+          NORMAL: "تم تفعيل الوضع العادي 🌿",
+          INTERMEDIATE: "تم تفعيل الوضع المتوسط 📈",
+          ADVANCED: "تم تفعيل وضع التقدم، استعد للتحدي 🔥",
+          INSANE: "تم تفعيل الوضع الجنوني، استعد للعذاب 💀",
+        };
+
+        showToast(messages[mode], "success");
+        UserSettings.updateModeButtons();
+      }
+
+      // ==================== الدوال الأساسية ====================
+      function calculateBonus() {
+        const monthTarget = UserSettings?.current?.targets?.month || 200;
+        const excess = [appState.month1, appState.month2, appState.month3]
+          .map((h) => Math.max(0, h - monthTarget))
+          .reduce((a, b) => a + b, 0);
+        return Math.min(
+          UserSettings?.current?.targets?.bonusMax || 100,
+          excess,
+        );
+      }
+
+      function calculateBoundless() {
+        const monthTarget = UserSettings?.current?.targets?.month || 200;
+        const excess = [appState.month1, appState.month2, appState.month3]
+          .map((h) => Math.max(0, h - monthTarget))
+          .reduce((a, b) => a + b, 0);
+        return Math.max(0, excess - calculateBonus());
+      }
+
+      function calculateQuarterTotal() {
+        return appState.month1 + appState.month2 + appState.month3;
+      }
+
+      function getDisplayNumber() {
+        switch (appState.currentScreen) {
+          case "quarter":
+            return calculateQuarterTotal();
+          case "month1":
+            return appState.month1;
+          case "month2":
+            return appState.month2;
+          case "month3":
+            return appState.month3;
+          case "bonus":
+            return calculateBonus();
+          case "boundless":
+            return calculateBoundless();
+          default:
+            return null;
+        }
+      }
+
+      function getMaxProgress() {
+        const targets = {
+          quarter: UserSettings?.current?.targets?.quarter || 700,
+          month1: UserSettings?.current?.targets?.month || 200,
+          month2: UserSettings?.current?.targets?.month || 200,
+          month3: UserSettings?.current?.targets?.month || 200,
+          bonus: UserSettings?.current?.targets?.bonusMax || 100,
+          boundless: null,
+        };
+        return targets[appState.currentScreen];
+      }
+
+      function calculateProgress() {
+        const current = getDisplayNumber();
+        const max = getMaxProgress();
+        if (max === null || current === null) return null;
+        return Math.min(100, (current / max) * 100);
+      }
+
+      function updateProgressBar() {
+        const progress = calculateProgress();
+        const circumference = 2 * Math.PI * 150;
+        const fill = document.getElementById("progress-fill");
+
+        if (progress === null) {
+          fill.style.strokeDashoffset = circumference;
+          fill.style.opacity = "0.3";
+        } else {
+          fill.style.opacity = "1";
+          fill.style.strokeDasharray = circumference;
+          fill.style.strokeDashoffset =
+            circumference - (progress / 100) * circumference;
+        }
+      }
+
+      function updateCircleColor() {
+        const container = document.getElementById("progress-container");
+        container.classList.remove("screen-bonus", "screen-boundless");
+        if (appState.currentScreen === "bonus")
+          container.classList.add("screen-bonus");
+        else if (appState.currentScreen === "boundless")
+          container.classList.add("screen-boundless");
+      }
+
+      function updateUI() {
+        const display = getDisplayNumber();
+        if (display !== null)
+          document.getElementById("current-number").textContent = display;
+
+        const screenNames = {
+          quarter: "الربع",
+          month1: "الشهر الأول",
+          month2: "الشهر الثاني",
+          month3: "الشهر الثالث",
+          bonus: "البونس",
+          boundless: "اللامحدود",
+          timer: "المؤقت",
+        };
+        document.getElementById("screen-title").textContent =
+          screenNames[appState.currentScreen];
+
+        const marginInfo = document.getElementById("margin-info");
+        if (appState.currentScreen === "quarter") {
+          marginInfo.innerHTML = `<i class="fas fa-bullseye"></i> هدف الربع: <span>${
+            UserSettings?.current?.targets?.quarter || 700
+          }</span> ساعة`;
+        } else if (appState.currentScreen.startsWith("month")) {
+          marginInfo.innerHTML = `<i class="fas fa-calendar"></i> هدف الشهر: <span>${
+            UserSettings?.current?.targets?.month || 200
+          }</span> ساعة`;
+        } else if (appState.currentScreen === "bonus") {
+          marginInfo.innerHTML = `<i class="fas fa-gift"></i> حد البونس: <span>${
+            UserSettings?.current?.targets?.bonusMax || 100
+          }</span> نقطة`;
+        } else if (appState.currentScreen === "boundless") {
+          marginInfo.innerHTML =
+            '<i class="fas fa-infinity"></i> ✨ بلا حدود ✨';
+        }
+
+        updateProgressBar();
+        updateCircleColor();
+        if (AdvancedStats?.updateDisplay) AdvancedStats.updateDisplay();
+      }
+
+      function addHours(hoursToAdd) {
+        hoursToAdd = parseFloat(hoursToAdd);
+        if (isNaN(hoursToAdd)) {
+          document.getElementById("error-message").textContent =
+            "الرجاء إدخال رقم صحيح";
+          return false;
+        }
+
+        if (
+          appState.currentScreen.startsWith("month") ||
+          ["quarter", "bonus", "boundless"].includes(appState.currentScreen)
+        ) {
+          if (!appState.isMonthEnded[appState.activeMonth]) {
+            appState[appState.activeMonth] = Math.max(
+              0,
+              appState[appState.activeMonth] + hoursToAdd,
+            );
+            updateUI();
+            document.getElementById("error-message").textContent = "";
+
+            localStorage.setItem("lastEntryDate", new Date().toDateString());
+            let streak = parseInt(localStorage.getItem("streak") || "0");
+            localStorage.setItem("streak", streak + 1);
+
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function showToast(message, type = "success") {
+        const toast = document.createElement("div");
+        toast.textContent = message;
+        toast.style.position = "fixed";
+        toast.style.bottom = "20px";
+        toast.style.right = "20px";
+        toast.style.background =
+          type === "success" ? "var(--accent-success)" : "var(--accent-danger)";
+        toast.style.color = "white";
+        toast.style.padding = "1rem 2rem";
+        toast.style.borderRadius = "10px";
+        toast.style.zIndex = "5000";
+        toast.style.boxShadow = "var(--card-shadow)";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+
+      // ==================== الإحصائيات المتقدمة ====================
+      const AdvancedStats = {
+        calculate() {
+          const total = calculateQuarterTotal();
+          const quarterTarget = UserSettings.current?.targets?.quarter || 700;
+          const streak = parseInt(localStorage.getItem("streak") || "0");
+          const daysPassed = this.getDaysPassed();
+          const avgDaily = daysPassed > 0 ? (total / daysPassed).toFixed(1) : 0;
+          const remainingDays = 90 - daysPassed;
+          const completionRate = ((total / quarterTarget) * 100).toFixed(1);
+          return { streak, avgDaily, remainingDays, completionRate };
+        },
+
+        getDaysPassed() {
+          const startDate = localStorage.getItem("startDate");
+          if (!startDate) {
+            localStorage.setItem("startDate", new Date().toISOString());
+            return 1;
+          }
+          const start = new Date(startDate);
+          const now = new Date();
+          return Math.ceil(Math.abs(now - start) / (1000 * 60 * 60 * 24));
+        },
+
+        updateDisplay() {
+          const stats = this.calculate();
+          document.getElementById("streak-count").textContent = stats.streak;
+          document.getElementById("avg-daily").textContent = stats.avgDaily;
+          document.getElementById("remaining-days").textContent =
+            stats.remainingDays;
+          document.getElementById("completion-rate").textContent =
+            stats.completionRate + "%";
+        },
+      };
+
+      // ==================== نظام المؤقت المتطور ====================
+      function updateTimerDisplay() {
+        const t = appState.timer;
+
+        const hours = String(t.hours).padStart(2, "0");
+        const minutes = String(t.minutes).padStart(2, "0");
+        const seconds = String(t.seconds).padStart(2, "0");
+
+        // جزء من عشرة من الثانية (رقم واحد)
+        const tenths = String(Math.floor(t.milliseconds / 100)).padStart(
+          1,
+          "0",
+        );
+
+        document.getElementById("timer-display").innerHTML = `
+    <span class="timer-digits">${hours}:${minutes}:${seconds}</span>
+    <span class="timer-ms">.${tenths}</span>
+  `;
+
+        // باقي الكود زي ما هو
+        const progress = ((t.seconds * 1000 + t.milliseconds) / 60000) * 100;
+        const progressFill = document.getElementById("timer-progress-fill");
+        if (progressFill) progressFill.style.width = `${progress}%`;
+
+        document.getElementById("timer-total-hours").textContent = (
+          appState.timer.totalTime / 3600000
+        ).toFixed(2);
+        document.getElementById("timer-sessions").textContent =
+          appState.timer.sessions;
+      }
+
+      function startTimer() {
+        if (!appState.timer.isRunning) {
+          appState.timer.isRunning = true;
+          document.getElementById("timer-start").disabled = true;
+          document.getElementById("timer-pause").disabled = false;
+
+          const startTime = Date.now() - appState.timer.totalMilliseconds;
+
+          appState.timer.intervalId = setInterval(() => {
+            const elapsed = Date.now() - startTime;
+
+            appState.timer.totalMilliseconds = elapsed;
+            appState.timer.hours = Math.floor(elapsed / 3600000);
+            appState.timer.minutes = Math.floor((elapsed % 3600000) / 60000);
+            appState.timer.seconds = Math.floor((elapsed % 60000) / 1000);
+            appState.timer.milliseconds = elapsed % 1000;
+
+            updateTimerDisplay();
+          }, 100);
+        }
+      }
+
+      function pauseTimer() {
+        if (appState.timer.isRunning) {
+          appState.timer.isRunning = false;
+          document.getElementById("timer-start").disabled = false;
+          document.getElementById("timer-pause").disabled = true;
+
+          if (appState.timer.intervalId) {
+            clearInterval(appState.timer.intervalId);
+            appState.timer.intervalId = null;
+          }
+        }
+      }
+
+      function resetTimer() {
+        if (appState.timer.isRunning) pauseTimer();
+
+        appState.timer = {
+          ...appState.timer,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 0,
+          totalMilliseconds: 0,
+          isRunning: false,
+          intervalId: null,
+        };
+
+        updateTimerDisplay();
+
+        document.getElementById("timer-start").disabled = false;
+        document.getElementById("timer-pause").disabled = true;
+
+        showToast("🔄 تم إعادة ضبط المؤقت", "info");
+      }
+
+      function addTimerToMonth() {
+        const totalHours = appState.timer.totalMilliseconds / 3600000;
+
+        if (totalHours > 0.001) {
+          const roundedHours = Math.round(totalHours * 100) / 100;
+
+          if (addHours(roundedHours)) {
+            appState.timer.sessions++;
+            appState.timer.totalTime += appState.timer.totalMilliseconds;
+            StorageSystem.saveSessions();
+            resetTimer();
+            showToast(`⏱️ تم إضافة ${roundedHours} ساعة`, "success");
+          }
+        } else {
+          showToast("⚠️ المؤقت فارغ", "error");
+        }
+      }
+
+      // ==================== نظام الحفظ المتقدم ====================
+      const StorageSystem = {
+        saveAll() {
+          try {
+            localStorage.setItem(
+              "appState",
+              JSON.stringify({
+                ...appState,
+                timer: {
+                  ...appState.timer,
+                  isRunning: false,
+                  intervalId: null,
+                },
+              }),
+            );
+
+            localStorage.setItem(
+              "userSettings",
+              JSON.stringify(UserSettings.current),
+            );
+
+            localStorage.setItem(
+              "timerStats",
+              JSON.stringify({
+                sessions: appState.timer.sessions || 0,
+                totalTime: appState.timer.totalTime || 0,
+                lastSessionDate: new Date().toISOString(),
+              }),
+            );
+
+            this.saveSessions();
+            return true;
+          } catch (e) {
+            console.error("خطأ في الحفظ:", e);
+            return false;
+          }
+        },
+
+        loadAll() {
+          try {
+            const savedState = localStorage.getItem("appState");
+            if (savedState) {
+              const parsed = JSON.parse(savedState);
+              appState = {
+                ...appState,
+                ...parsed,
+                timer: {
+                  ...appState.timer,
+                  ...parsed.timer,
+                  isRunning: false,
+                  intervalId: null,
+                },
+              };
+            }
+
+            const savedStats = localStorage.getItem("timerStats");
+            if (savedStats) {
+              const stats = JSON.parse(savedStats);
+              if (appState.timer) {
+                appState.timer.sessions = stats.sessions || 0;
+                appState.timer.totalTime = stats.totalTime || 0;
+              }
+            }
+
+            return true;
+          } catch (e) {
+            console.error("خطأ في التحميل:", e);
+            return false;
+          }
+        },
+
+        saveSessions() {
+          const sessions = JSON.parse(
+            localStorage.getItem("timerSessions") || "[]",
+          );
+
+          if (appState.timer?.sessions > sessions.length) {
+            sessions.push({
+              date: new Date().toISOString(),
+              hours: (appState.timer.totalTime || 0) / 3600000,
+              month: appState.activeMonth,
+              note: "",
+            });
+
+            if (sessions.length > 100) sessions.shift();
+            localStorage.setItem("timerSessions", JSON.stringify(sessions));
+          }
+        },
+
+        exportData() {
+          const data = {
+            appState: appState,
+            userSettings: UserSettings.current,
+            timerStats: {
+              sessions: appState.timer?.sessions || 0,
+              totalTime: appState.timer?.totalTime || 0,
+            },
+            sessions: JSON.parse(localStorage.getItem("timerSessions") || "[]"),
+            exportDate: new Date().toISOString(),
+            version: "2.0",
+          };
+
+          const blob = new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json",
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = `رحلة-الـ700-${
+            new Date().toISOString().split("T")[0]
+          }.json`;
+          a.click();
+          showToast("📦 تم تصدير جميع البيانات", "success");
+        },
+
+        clearAll() {
+          if (confirm("⚠️ هل أنت متأكد؟ سيتم مسح جميع البيانات!")) {
+            localStorage.clear();
+            appState = {
+              month1: 0,
+              month2: 0,
+              month3: 0,
+              activeMonth: "month1",
+              currentScreen: "quarter",
+              timer: {
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+                milliseconds: 0,
+                totalMilliseconds: 0,
+                isRunning: false,
+                intervalId: null,
+                sessions: 0,
+                totalTime: 0,
+              },
+              isMonthEnded: { month1: false, month2: false, month3: false },
+            };
+            UserSettings.current = { ...UserSettings.defaults };
+            updateUI();
+            UserSettings.updateUI();
+            showToast("🗑️ تم مسح كل البيانات", "success");
+          }
+        },
+
+        importData(file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            try {
+              const data = JSON.parse(e.target.result);
+
+              if (data.appState && data.userSettings) {
+                appState = data.appState;
+                UserSettings.current = data.userSettings;
+
+                appState.timer.isRunning = false;
+                appState.timer.intervalId = null;
+
+                this.saveAll();
+                updateUI();
+                UserSettings.updateUI();
+
+                showToast("📥 تم استيراد البيانات بنجاح", "success");
+              } else {
+                showToast("❌ ملف غير صالح", "error");
+              }
+            } catch (error) {
+              showToast("❌ خطأ في قراءة الملف", "error");
+            }
+          };
+          reader.readAsText(file);
+        },
+      };
+
+      // ==================== الأحداث والتهيئة ====================
+      document.addEventListener("DOMContentLoaded", () => {
+        StorageSystem.loadAll();
+        UserSettings.load();
+
+        // إعدادات
+        document
+          .getElementById("settings-toggle")
+          .addEventListener("click", () => {
+            document.getElementById("settings-panel").classList.add("open");
+          });
+
+        document
+          .getElementById("settings-close")
+          .addEventListener("click", () => {
+            document.getElementById("settings-panel").classList.remove("open");
+          });
+
+        // السلايدرات
+        document
+          .getElementById("quarter-target")
+          .addEventListener("input", (e) => {
+            document.getElementById("quarter-value-display").textContent =
+              e.target.value;
+          });
+        document
+          .getElementById("month-target")
+          .addEventListener("input", (e) => {
+            document.getElementById("month-value-display").textContent =
+              e.target.value;
+          });
+        document
+          .getElementById("bonus-target")
+          .addEventListener("input", (e) => {
+            document.getElementById("bonus-value-display").textContent =
+              e.target.value;
+          });
+
+        // الأنماط والثيمات
+        document.querySelectorAll(".mode-btn").forEach((btn) => {
+          btn.addEventListener("click", () => applyMode(btn.dataset.mode));
+        });
+
+        document.querySelectorAll(".theme-option").forEach((btn) => {
+          btn.addEventListener("click", () =>
+            UserSettings.setTheme(btn.dataset.theme),
+          );
+        });
+
+        // حفظ الإعدادات
+        document
+          .getElementById("save-settings")
+          .addEventListener("click", () => {
+            UserSettings.current.targets = {
+              quarter: parseInt(
+                document.getElementById("quarter-target").value,
+              ),
+              month: parseInt(document.getElementById("month-target").value),
+              bonusMax: parseInt(document.getElementById("bonus-target").value),
+            };
+            UserSettings.current.notifications = {
+              dailyReminder: document.getElementById("daily-reminder").value,
+              achievements: document.getElementById("achievement-notifications")
+                .checked,
+            };
+            UserSettings.current.challenge =
+              document.getElementById("streak-challenge").value;
+            UserSettings.save();
+            document.getElementById("settings-panel").classList.remove("open");
+          });
+
+        // أزرار سريعة
+        document.querySelectorAll(".quick-add").forEach((btn) => {
+          btn.addEventListener("click", () =>
+            addHours(parseFloat(btn.dataset.hours)),
+          );
+        });
+
+        // الأزرار الرئيسية
+        document.getElementById("add-button").addEventListener("click", () => {
+          const hours = document.getElementById("hours-input").value;
+          if (addHours(hours))
+            document.getElementById("hours-input").value = "";
+        });
+
+        document.querySelectorAll(".nav-item").forEach((item) => {
+          item.addEventListener("click", () => {
+            document
+              .querySelectorAll(".nav-item")
+              .forEach((n) => n.classList.remove("active"));
+            item.classList.add("active");
+            appState.currentScreen = item.dataset.screen;
+            document.getElementById("timer-container").style.display =
+              appState.currentScreen === "timer" ? "block" : "none";
+            updateUI();
+          });
+        });
+
+        // المؤقت
+        document
+          .getElementById("timer-start")
+          .addEventListener("click", startTimer);
+        document
+          .getElementById("timer-pause")
+          .addEventListener("click", pauseTimer);
+        document
+          .getElementById("timer-reset")
+          .addEventListener("click", resetTimer);
+        document
+          .getElementById("timer-add")
+          .addEventListener("click", addTimerToMonth);
+
+        // أزرار إضافية
+        document.getElementById("manual-save").addEventListener("click", () => {
+          StorageSystem.saveAll();
+          showToast("💾 تم الحفظ", "success");
+        });
+
+        document.getElementById("export-data").addEventListener("click", () => {
+          StorageSystem.exportData();
+        });
+
+        document
+          .getElementById("share-achievement")
+          .addEventListener("click", () => {
+            const total = calculateQuarterTotal();
+            const text = `🎯 حققت ${total} ساعة في رحلة الـ 700!`;
+            navigator.clipboard?.writeText(text);
+            showToast("📋 تم النسخ", "success");
+          });
+
+        document.getElementById("clear-data").addEventListener("click", () => {
+          StorageSystem.clearAll();
+        });
+
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = ".json";
+        fileInput.style.display = "none";
+        document.body.appendChild(fileInput);
+
+        document.getElementById("import-data").addEventListener("click", () => {
+          fileInput.click();
+        });
+
+        fileInput.addEventListener("change", (e) => {
+          if (e.target.files[0]) {
+            StorageSystem.importData(e.target.files[0]);
+          }
+          fileInput.value = "";
+        });
+
+        // تحديث دوري
+        setInterval(() => AdvancedStats?.updateDisplay?.(), 60000);
+
+        // تهيئة أولية
+        setTimeout(() => {
+          updateUI();
+          AdvancedStats.updateDisplay();
+          updateTimerDisplay();
+        }, 100);
+      });
+
+      window.addEventListener("beforeunload", () => {
+        StorageSystem.saveAll();
+      });
+    </script>
+  </body>
+</html>
